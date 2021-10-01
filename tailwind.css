@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  @keyframes stars {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes slide {
+    100% { right: 0; left: auto; }
+  }
+
+  .calc__screen {
+    height: calc(100vh - 96px);
+  }
+
+  #app:after {
+    content: '';
+    z-index: -1;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: url(./stars.jpeg) no-repeat center center fixed;
+    box-shadow: inset 0 0 0 9999px rgba(14, 15, 51, .5);
+    animation: stars 60s ease-in-out infinite;
+  }
+
+  #planet {
+    width: 50vw;
+    height: 50vw;
+    position: absolute;
+    top: 50%; right: -64px;
+    transform: translateY(-50%);
+  }
+
+  html body {
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  h2.leading-slug {
+    line-height: 1.15;
+  }
+  
+  a.slide__down {
+    box-shadow: inset 0 0 12px 0 #4387eb, 0px 0px 12px 0px #4387eb;
+  }
+  
+  a.slide__down:hover {
+    box-shadow: inset 0 -64px 0 0 #4387eb;
+  }
+
+  .menu__option {
+    position: relative;
+    background-image: linear-gradient(180deg, rgba(27,83,182,0) 20%, rgba(19,49,113,0) 100%);
+    z-index: 1;
+  }
+
+  .menu__option::before {
+    position: absolute;
+    content: '';
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-image: linear-gradient(180deg, rgba(27,83,182,1) 20%, rgba(19,49,113,1) 100%);
+    z-index: -1; opacity: 0;
+    transition: opacity .3s linear;
+  }
+
+  .menu__option:hover::before {
+    opacity: 1;
+  }
+}
